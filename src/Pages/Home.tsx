@@ -1,16 +1,29 @@
 import MainData from "../Components/MainData/MainData";
 import Sidebar from "../Components/Sidebar/Sidebar";
 import NightImage from "../assets/bg1.png";
-import {useEffect} from 'react'
+import {useEffect, useState} from 'react'
 import { fetchData } from "../Redux/Slices/ForcastSlice";
 import { useAppDispatch } from "../Hooks/hooks";
+import axios from "axios";
 
 function Home() {
+  
   const dispatch = useAppDispatch();
+  const [city, setCity] = useState<string>('');
 
   useEffect(() => {
-    dispatch(fetchData());
-  }, [])
+    navigator.geolocation.getCurrentPosition(async (position) => {
+      const response = await axios.get(
+        `https://us1.locationiq.com/v1/reverse?key=${import.meta.env.VITE_LOC_API_KEY}&lat=${position.coords.latitude}&lon=${position.coords.longitude}&format=json`);
+      setCity(response?.data?.address?.city);
+    })
+    if (!city) {
+      dispatch(fetchData('Aligarh'))
+    }
+    else {
+      dispatch(fetchData(city));
+    }
+  }, [city])
 
   return (
     <div

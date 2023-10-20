@@ -1,17 +1,27 @@
+import { useSelector } from "react-redux";
+import ReduxState from "../../Interfaces/ReduxState";
 import TempCart from "./Carts/TempCart";
-import Sun from "../../assets/sun.png";
-import Rain from "../../assets/rain.png"
+import sun from '../../assets/sun.png'
 
 function WeekRow() {
+
+  const dayForcast = useSelector((state: ReduxState) => state.forecast.data.dayForecast);
+
+  const weekdays = [
+    'Sunday',
+    'Monday',
+    'Tuesday',
+    'Wednesday',
+    'Thursday',
+    'Friday',
+    'Saturday'
+  ]
+
   return (
     <div className="flex flex-wrap justify-start px-12 py-2  gap-6 w-full" >
-      <TempCart title="Saturday" image={Sun} temp="25.5°C" />
-      <TempCart title="Sunday" image={Rain} temp="27.4°C" />
-      <TempCart title="Monday" image={Sun} temp="23.5°C" />
-      <TempCart title="Tuesday" image={Rain} temp="29.5°C" />
-      <TempCart title="Wednesday" image={Rain} temp="15.5°C" />
-      <TempCart title="Thurshday" image={Sun} temp="35.5°C" />
-      <TempCart title="Friday" image={Sun} temp="21.5°C" />
+      {dayForcast && dayForcast.map((forecast) => {
+        return <TempCart title={weekdays[(new Date(forecast.date)).getDay()]} temp={forecast.avgtemp_c.toString()} image={sun}  />
+     })}
     </div>
   );
 }

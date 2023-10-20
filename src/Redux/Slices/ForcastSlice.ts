@@ -29,10 +29,10 @@ const initialState: ForecastDataState = {
   },
 };
 
-export const fetchData = createAsyncThunk("data/fetchdata", async () => {
+export const fetchData = createAsyncThunk("data/fetchdata", async (city:string) => {
   try {
     const response = await axiosInstance.get(
-      `forecast.json?key=${import.meta.env.VITE_API_KEY}&days=7&aqi=yes&q=Delhi`
+      `forecast.json?key=${import.meta.env.VITE_API_KEY}&days=7&aqi=yes&q=${city}`
     );
     console.log(response);
     return response;
@@ -49,8 +49,10 @@ const forecastSlice = createSlice({
     builder
       .addCase(fetchData.fulfilled, (state, action) => {
         if (!action.payload) return;
+        console.log(action.payload);
         state.status = "succes";
-        console.log("action", action);
+        // console.log("action", action);
+        
 
         const { location, forecast, current } = action.payload.data;
         // setting location
@@ -70,7 +72,7 @@ const forecastSlice = createSlice({
 
         // setting currentData
         state.data.currentData.uv = current.uv;
-        state.data.currentData.wind_kmph = current.wind_kmph;
+        state.data.currentData.wind_kmph = current.wind_kph;
         state.data.currentData.humidity = current.humidity;
         state.data.currentData.vis_km = current.vis_km;
         state.data.currentData.aqi = current.air_quality.pm2_5;

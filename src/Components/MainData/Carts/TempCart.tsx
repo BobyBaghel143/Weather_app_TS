@@ -11,7 +11,7 @@ function TempCart({ title, image, temp }: Temperature) {
       <div className="h-[40%]">
         <img src={image} className="h-full" />
       </div>
-      <div className="font-semibold text-lg">{temp}</div>
+      <div className="font-semibold text-lg">{temp}°C</div>
     </div>
   );
 }

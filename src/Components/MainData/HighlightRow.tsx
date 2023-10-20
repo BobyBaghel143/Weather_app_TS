@@ -15,7 +15,7 @@ function HighlightRow() {
   return (
     <div className="flex flex-wrap items-center justify-start w-full gap-4 px-12 py-2" >
       <HighlightCart title="UV Index" data={currentData.uv.toString()} footer={uvRange()} />
-      <HighlightCart title="Wind Status" data= "try" footer="km/h" />
+      <HighlightCart title="Wind Status" data={currentData.wind_kmph.toString()} footer="km/h" />
       <HighlightCart title="Humidity" data={currentData.humidity.toString() + "%"} footer="low" />
       <HighlightCart title="Visibility" data={currentData.vis_km.toString() + " km/h"} footer="low" />
       <HighlightCart title="Sunrise & Sunset" data={currentData.sunrise}  footer={currentData.sunset} />

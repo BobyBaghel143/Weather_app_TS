@@ -6,7 +6,8 @@ import ReduxState from "../../Interfaces/ReduxState";
 
 function Lowerhalf() {
  
-  const currentData = useSelector((state:ReduxState)=>state.forecast.data.currentData)
+  const currentData = useSelector((state: ReduxState) => state.forecast.data.currentData)
+  const location = useSelector((state:ReduxState)=> state.forecast.data.location)
    
   return (
     <div className=" h-[40%] w-full p-4 flex flex-col justify-between">
@@ -20,14 +21,14 @@ function Lowerhalf() {
 
         <div className="flex  items-center gap-x-4  my-2 text-sm">
           <BsFillCloudLightningFill />
-          <p>Perc - 10 %</p>
+          <p>Perc - {currentData.chance_of_rain} </p>
         </div>
 
       </div>
 
       <div className="flex gap-2 items-center">
         <div> <MdLocationPin /> </div>
-        <div>Noida, Utter Pradesh</div>
+        <div> {location.name}, {location.region}, {location.country} </div>
       </div>
 
     </div>
