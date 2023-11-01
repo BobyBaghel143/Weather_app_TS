@@ -1,6 +1,13 @@
-export default interface DayForecast {
+export default interface ForecastItemMap {
   date: string;
-  avgtemp_c: number;
-  avgtemp_f: number;
-  condition: string;
+  day: {
+    avgtemp_c: number;
+    avgtemp_f: number;
+    condition: {
+      text: string;
+    };
+  };
 }
+
+
+

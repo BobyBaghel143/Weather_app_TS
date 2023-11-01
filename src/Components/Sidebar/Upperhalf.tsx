@@ -17,9 +17,9 @@ function Upperhalf() {
           type="text"
           placeholder="Searching..."
         />
-        <div className=" basis-[10%] block p-4 text-white text-lg font-semibold bg-sky-500 rounded-tr-md rounded-br-md">
+        <button className=" basis-[10%] block p-4 text-white text-lg font-semibold bg-sky-500 rounded-tr-md rounded-br-md">
           <CiSearch />
-        </div>
+        </button>
       </div>
 
       <div className=" w-full h-[60%] flex justify-center mt-12">
@@ -42,3 +42,7 @@ function Upperhalf() {
 }
 
 export default Upperhalf;
+
+
+
+

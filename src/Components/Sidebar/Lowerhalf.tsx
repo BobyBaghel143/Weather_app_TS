@@ -13,7 +13,6 @@ function Lowerhalf() {
     <div className=" h-[40%] w-full p-4 flex flex-col justify-between">
 
       <div className="flex flex-col">
-
         <div className=" flex items-center gap-4 my-2 text-sm  ">
           <AiFillCloud />
           <p>{currentData.condition} </p>
@@ -21,14 +20,13 @@ function Lowerhalf() {
 
         <div className="flex  items-center gap-x-4  my-2 text-sm">
           <BsFillCloudLightningFill />
-          <p>Perc - {currentData.chance_of_rain} </p>
+          <p>Perc - {currentData.chance_of_rain + "%"} </p>
         </div>
-
       </div>
 
       <div className="flex gap-2 items-center">
         <div> <MdLocationPin /> </div>
-        <div> {location.name}, {location.region}, {location.country} </div>
+        <div> {location.name}, {location.region}, {location.country}, {location.localtime} </div>
       </div>
 
     </div>
