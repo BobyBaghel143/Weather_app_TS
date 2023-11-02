@@ -13,12 +13,12 @@ function Home() {
 
   useEffect(() => {
     console.log(city, "cityReq")
-    if (!city) {
     navigator.geolocation.getCurrentPosition(async (position) => {
       const response = await axios.get(
         `https://us1.locationiq.com/v1/reverse?key=${import.meta.env.VITE_LOC_API_KEY}&lat=${position.coords.latitude}&lon=${position.coords.longitude}&format=json`);
         setCity(response?.data?.address?.city);
       })
+    if (!city) {
       dispatch(fetchData('Aligarh'))
     }
     else {

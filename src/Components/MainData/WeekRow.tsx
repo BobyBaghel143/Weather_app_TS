@@ -4,8 +4,8 @@ import TempCart from "./Carts/TempCart";
 import CloudImage from '../../assets/CloudImage.png'
 
 function WeekRow() {
-
   const dayForcast = useSelector((state: ReduxState) => state.forecast.data.dayForecast);
+  const tempFormat = useSelector((state: ReduxState) => state.forecast.tempFormat);
 
   const weekdays = [
     'Sunday',
@@ -17,16 +17,23 @@ function WeekRow() {
     'Saturday',
   ]
 
+
   return (
     <div className="flex flex-wrap justify-start px-12 py-2  gap-6 w-full" >
       {dayForcast && dayForcast.map((forecast) => {
+        const temp = tempFormat === "celsius" ?
+        Math.floor(forecast.avgtemp_c).toString() + "°C" :
+        Math.floor(forecast.avgtemp_f).toString() + "°F";
         return (
-          <TempCart title={weekdays[(new Date(forecast.date)).getDay()]} temp={forecast.avgtemp_c.toString()} image={CloudImage} />
-          // <div>
-          //   <TempCart title="boby" image={CloudImage} temp="23" />
-          // </div>
+          <TempCart
+            key={forecast.date}
+            image={forecast.image}
+            condition={forecast.condition}
+            temp={temp}
+            title={weekdays[(new Date(forecast.date)).getDay()]}
+          />
         )
-     })}
+      })}
     </div>
   );
 }
