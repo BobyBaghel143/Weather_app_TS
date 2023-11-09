@@ -3,6 +3,7 @@ import CloudImage from "../../assets/cloud2.png"
 import { useSelector } from "react-redux";
 import ReduxState from "../../Interfaces/ReduxState";
 import { useState } from "react";
+import GetDay from "../MainData/GetDay";
 
 
 type  PropsCity = {
@@ -13,11 +14,24 @@ function Upperhalf({ setCity } : PropsCity) {
   const [searchCity, setSearchCity] = useState("");
 
   const currentData = useSelector((state: ReduxState) => state.forecast.data.currentData);
+  const locationData = useSelector((state: ReduxState) => state.forecast.data.location.localtime);
 
   function HandleCitySearch() {
     console.log("Search");
     setCity(searchCity)
   }
+
+
+  const DateData = new Date(locationData).toLocaleString(undefined, {
+    timeZone: "Asia/Kolkata",
+  });
+  const day = new Date(DateData).getDay();
+  const time = new Date().toLocaleTimeString("en-IN", {
+    timeZone: "UTC",
+    hour12: true,
+    hour: "numeric",
+    minute:"numeric",
+  })
 
   return (
     <div className="max-h-[30rem] w-full p-4 flex flex-col  justify-center itemx-start basis-[65%] " >
@@ -46,7 +60,9 @@ function Upperhalf({ setCity } : PropsCity) {
           <div>{currentData.temp_c} </div>
           <div className="text-4xl mt-1">°C</div>
         </div>
-        <div className="text-md text-black">Wednesday , 10:08</div>
+        <div className="text-md text-black">
+          <GetDay day={day} /> {time}
+        </div>
       </div>
    
     </div>
