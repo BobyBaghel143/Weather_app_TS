@@ -19,7 +19,7 @@ function TopRow({setTodayWeekToggle}: Toggle) {
   return (
     <div className="flex items-center justify-between mt-5 w-full px-12 py-2 ">
       <div className="flex items-center justify-center text-xl font-semibold">
-        <div className="mr-4 cursor-pointer " onClick={() => setTodayWeekToggle(true)}> Today </div>
+        <div className="mr-4 cursor-pointer" onClick={() => setTodayWeekToggle(true)}> Today </div>
         <div className="ml-4 cursor-pointer" onClick={() => setTodayWeekToggle(false)} > Week </div>
       </div>
       <div className="flex items-center justify-center font-semibold">

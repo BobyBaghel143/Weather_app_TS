@@ -1,7 +1,6 @@
 import { useSelector } from "react-redux";
 import ReduxState from "../../Interfaces/ReduxState";
 import TempCart from "./Carts/TempCart";
-import CloudImage from '../../assets/CloudImage.png'
 
 function WeekRow() {
   const dayForcast = useSelector((state: ReduxState) => state.forecast.data.dayForecast);
