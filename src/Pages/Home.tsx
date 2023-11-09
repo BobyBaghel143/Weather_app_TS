@@ -30,7 +30,7 @@ function Home() {
     <div
       className="min-h-[100vh] px-8 py-8 flex flex-row  justify-center items-stretch"
       style={{backgroundSize: "cover", background: `linear-gradient(rgba(0,0,0,0.5), rgba(0,0,0,0.5)), url(${NightImage})`}} >
-      <Sidebar/>
+      <Sidebar setCity={setCity} />
       <MainData />
     </div>
   );
