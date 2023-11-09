@@ -15,6 +15,7 @@ function Upperhalf({ setCity } : PropsCity) {
 
   const currentData = useSelector((state: ReduxState) => state.forecast.data.currentData);
   const locationData = useSelector((state: ReduxState) => state.forecast.data.location.localtime);
+  const tempFormat = useSelector((state: ReduxState) => state.forecast.tempFormat);
 
   function HandleCitySearch() {
     console.log("Search");
@@ -57,8 +58,18 @@ function Upperhalf({ setCity } : PropsCity) {
 
       <div className="flex flex-col items-start mt-4" >
         <div className="text-7xl flex  items-start text-black ">
-          <div>{currentData.temp_c} </div>
-          <div className="text-4xl mt-1">°C</div>
+          {tempFormat == "celsius" ? (
+            <>
+              <div> {Math.floor(currentData.temp_c)} </div>
+              <div className="text-4xl mt-1">°C</div>
+            </>
+          ) : (
+              <>
+              <div> {Math.floor(currentData.temp_f)} </div>
+              <div className="text-4xl mt-1">°F</div>
+              </>
+          )}
+          
         </div>
         <div className="text-md text-black">
           <GetDay day={day} /> {time}
