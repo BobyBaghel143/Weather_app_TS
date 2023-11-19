@@ -7,7 +7,7 @@ interface Temperature {
 
 function TempCart({ title, image, temp, condition }: Temperature) {
   return (
-    <div className=" flex flex-col h-[165px] items-center justify-between border  bg-white  rounded-xl cursor-pointer hover:scale-110 transition-all ease-in-out duration-500 hover:shadow-md relative "
+    <div className=" flex flex-col h-[165px] items-center justify-between border  bg-white  rounded-t-3xl cursor-pointer hover:scale-110 transition-all ease-in-out duration-500 hover:shadow-md relative "
       title={condition}
     >
       <div className="w-[150px] h-[165px] text-center flex flex-col justify-between items-center ">

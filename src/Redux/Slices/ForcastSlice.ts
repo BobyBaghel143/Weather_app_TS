@@ -6,7 +6,7 @@ import  { TodayForecastRes } from "../../Interfaces/TodayForecast";
 
 const initialState: ForecastDataState = {
   status: "default",
-  tempFormat:"celsius",
+  tempFormat: "celsius",
   data: {
     location: {
       localtime: "",
@@ -55,7 +55,7 @@ const forecastSlice = createSlice({
         state.tempFormat = "fahrenheit";
       }
       return state;
-    }
+    },
   },
   extraReducers: (builder) => {
     builder

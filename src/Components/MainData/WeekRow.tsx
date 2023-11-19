@@ -18,7 +18,7 @@ function WeekRow() {
 
 
   return (
-    <div className="flex flex-wrap justify-start px-12 py-2  gap-6 w-full" >
+    <div className=" overflow-x-auto flex flex-wrap justify-start px-12 py-2 gap-6" >
       {dayForcast && dayForcast.map((forecast) => {
         const temp = tempFormat === "celsius" ?
         Math.floor(forecast.avgtemp_c).toString() + "°C" :
